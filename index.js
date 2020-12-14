@@ -148,8 +148,16 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScore, inning, numOfInnings) {
+  let home = 0;
+  let away = 0;
+ for(let i = 0; i < numOfInnings; i++)
+ {
+   getInningScore(inning);
+   
+ }
+
+  return array;
 }
 
 
