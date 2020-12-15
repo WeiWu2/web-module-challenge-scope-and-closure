@@ -28,11 +28,12 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+  count is a global var in counter2
   2. Which of the two uses a closure? How can you tell?
-  
+  counter 1 is using closure, I can tell because the counter function is using the count var that is declared in counterMaker
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+     counter1 is better when you don't want count to be changed outside of that function,counter 2 is better when you want to change count from anywhere.
 */
 
 // counter1 code
@@ -151,12 +152,24 @@ Use the scoreboard function below to do the following:
 function scoreboard(getInningScore, inning, numOfInnings) {
   let home = 0;
   let away = 0;
+  let array = [];
  for(let i = 0; i < numOfInnings; i++)
  {
-   getInningScore(inning);
+
+   let score = getInningScore(inning);
+   array.push(`Inning ${i}: Away ${score.Away} - Home ${score.Home}`)
+   home += score.Home;
+   away += score.Away;
    
  }
+ if(home == away)
+ {
 
+  array.push(`This game will require extra innings: Away ${score.Away} - Home ${score.Home}`);
+
+ }
+ else 
+ array.push(`Final Score: ${score.Away} - Home ${score.Home}`);
   return array;
 }
 
